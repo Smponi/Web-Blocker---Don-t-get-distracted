@@ -1,0 +1,20 @@
+{
+"manifest_version": 2,
+"name": "prioreties first",
+"description": "don't get distracted!",
+"icons":{
+    "128": "Unbenannt-2.png"
+},
+"version": "1.0.0",
+"browser_action": {
+    "default title": "Work hard dream big",
+    "default_popup": "popup.html"
+},
+"permissions": [
+"http://*/*", "https://*'/*","tabs","cookies","*://*.google.com","storage"
+],
+"background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  }
+}
