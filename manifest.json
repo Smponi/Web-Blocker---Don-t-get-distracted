@@ -11,7 +11,7 @@
     "default_popup": "popup.html"
 },
 "permissions": [
-"http://*/*", "https://*'/*","tabs","cookies","*://*.google.com","storage"
+"http://*/*", "https://*'/*","tabs","cookies","*://*.google.com","storage","webrequestblocking"
 ],
 "background": {
     "scripts": ["background.js"],

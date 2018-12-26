@@ -1,37 +1,36 @@
-// by passing an object you can define default values e.g.: []
-window.onload = function up() {
-    var temp;
-    function myFunction() {
-       temp = document.getElementById("textbox1").value;
-    
-        // chrome.storage.local.set({key: list}, function() {
-            
-        //   });
-        //   chrome.storage.local.get(['key'], function(result) {
-        //     console.log('Value currently is ' + result.key);
-        //   });
-        addLink(temp);
-        
-    }
-    document.getElementById("add2").addEventListener("click", myFunction, true);
-    
+var boolean = false;
+function restoreOptions1() {
+    // Use default value = false.
+    chrome.storage.local.get(function (items) {
+       if(items.value==null){
+           items.value=false;
+       }
+       items.value=!items.value;
+        chrome.storage.local.set(items, function () {
+            document.getElementById("notification").checked = items.value;
+          });
+          console.log(items.value);
+      });
+      
 }
+document.addEventListener('DOMContentLoaded', function () {
+    restoreOptions1();
+    document.getElementById("notification").addEventListener('click', restoreOptions1);
+ 
 
-
-function addLink(link) {
-chrome.storage.sync.get(function(items) {
-    if (Object.keys(items).length > 0 && items.data) {
-        // The data array already exists, add to it the new server and nickname
-        items.data.push({link});
-    } else {
-        // The data array doesn't exist yet, create it
-        items.data = [{link}];
-    }
-
-    // Now save the updated items using set
-    chrome.storage.sync.set(items, function() {
-        console.log('Data successfully saved to the storage!');
-        console.log(items);
-    });
 });
+// function change() {
+//     chrome.storage.local.get(function (items) {
+//         chrome.storage.local.set(items, function () {
+//             items.value = !items.value;
+//             document.getElementById("notification").checked = items.value;
+//         });
+//     });
+// }
+function print1() {
+    chrome.storage.local.get(function (items) {
+        console.log(items.value);
+    });
+
+
 }
