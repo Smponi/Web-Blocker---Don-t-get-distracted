@@ -6,5 +6,11 @@ Timer
 
 Settingspage
 
-Blacklist
+Blacklist (Check)
+
+BLACKLIST ANZEIGEN LASSEN
+
+Checkbox sollte bei Start false sein. (Aktuell noch true)
+
+TDD nutzen ist komplett aids js zu testen
 
