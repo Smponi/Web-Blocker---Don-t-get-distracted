@@ -14,7 +14,9 @@
 "http://*/*", "https://*'/*","tabs","cookies","*://*.google.com","storage","webrequestblocking"
 ],
 "background": {
-    "scripts": ["background.js"],
-    "persistent": true
+    "scripts":
+    ["background.js",
+    "storage.js"],
+    "persistent": false
   }
 }

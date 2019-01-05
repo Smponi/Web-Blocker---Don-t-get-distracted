@@ -40,7 +40,7 @@ window.onload = function up() {
       }
     }
   //DAS MUSS IN DIE BLACKLIST HTML REIN
-  //document.getElementById("add2").addEventListener("click", myFunction);
+    document.getElementById("add2").addEventListener("click", myFunction);
   //document.getElementById("clear").addEventListener("click", myDelete);
   //table = document.getElementById("BlackTable");
 }
@@ -61,6 +61,7 @@ function addLink(link) {
       console.log('Data successfully saved to the storage!');
       console.log(items);
       blacklist = items.data;
+      console.log(blacklist);
     });
   });
 }
