@@ -1,13 +1,19 @@
 var temp;
 var blacklist = [];
 
-
+document.addEventListener('DOMContentLoaded', function () {
+  document.getElementById("clear").addEventListener("click", function(){deleteAll()});
+  document.getElementById("add2").addEventListener("click", function(){myFunction()});
+  document.getElementById("deleted").addEventListener("click", function(){deleteEntry(1)});
+  document.getElementById("deleteEntries").addEventListener("click", function(){deleteEntries()});
+});
 // Damit blacklist nicht leer
 chrome.storage.local.get(function (items) {
 
   blacklist = items.data;
 });
-window.onload = function up() {
+
+  
   function myFunction() {
     temp = document.getElementById("textbox1").value;
 
@@ -25,25 +31,38 @@ window.onload = function up() {
   }
 
     /**
+     * MUSS NOCH GETESTET WERDEN
+     * 
      * Removes entry by splicing the array.
      * stores then blacklist in items.data
      * @param index int
      */
   function deleteEntry(index) {
+    console.log("Hiiiiiiiii");
       if(index>-1 && index < blacklist.length){
           blacklist.splice(index,1);
-          chrome.storage.locale.get(function (items){
+          chrome.storage.local.get(function (items) {
               items.data = blacklist;
-              chrome.storage.toLocaleString.set(items, function () {
+              chrome.storage.local.set(items, function () { 
               })
           })
       }
     }
-  //DAS MUSS IN DIE BLACKLIST HTML REIN
-    document.getElementById("add2").addEventListener("click", myFunction);
-  //document.getElementById("clear").addEventListener("click", myDelete);
+
   //table = document.getElementById("BlackTable");
-}
+  function deleteEntries() {
+    var entries = [];
+    for (var i=0; i< blacklist.length; i++){
+      if(document.getElementById(i).checked){
+        entries.push(i);
+      }
+    }
+    for (var i=0;i<entries.length;i++){
+      deleteEntry(entries[i]-i);
+    }
+    alert("Selected entries deleted succsuccessfully!");
+    location.reload();
+  }
 
 
 function addLink(link) {
@@ -64,10 +83,7 @@ function addLink(link) {
       console.log(blacklist);
     });
   });
-}
+  location.reload();
 
-function tableContent(){
-  for(var i=0; i<blacklist.length;i++ ){
-    
-  }
+
 }

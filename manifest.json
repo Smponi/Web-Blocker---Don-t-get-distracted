@@ -17,6 +17,7 @@
     "scripts":
     ["background.js",
     "storage.js"],
+    "pages": ["popup.html"],
     "persistent": false
   }
 }

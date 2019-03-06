@@ -2,6 +2,8 @@
 <html>
 <head>
     <script src="storage.js"></script>
+    <script src="printBlackList.js"></script>
+    <script src="backup.js"></script>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Blacklist</title>
@@ -12,13 +14,11 @@
 <body>
     <input form="text" id="textbox1">
     <button id="add2">Hinzufügen</button>
+    <button id="deleted">Delete Entry 1</button>
     <button id="clear">Lösche Inhalt</button>
-    <table>
-        <tr>
-          <th>Index</th>
-          <th>URL</th>
-        </tr>
-      </table>    
-</body>
+    <div id="myDynamicTable"></div>
+    <button id="deleteEntries">Delete Entries</button>
+    <button id="download">Donwload</button>
+    </body>
 
 </html>
