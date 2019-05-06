@@ -2,13 +2,11 @@ var temp;
 var blacklist = [];
 
 document.addEventListener('DOMContentLoaded', function () {
-  document.getElementById("clear").addEventListener("click", function(){deleteAll()});
   document.getElementById("add2").addEventListener("click", function(){myFunction()});
-  document.getElementById("deleted").addEventListener("click", function(){deleteEntry(1)});
   document.getElementById("deleteEntries").addEventListener("click", function(){deleteEntries()});
 });
 // Damit blacklist nicht leer
-chrome.storage.local.get(function (items) {
+chrome.storage.sync.get(function (items) {
 
   blacklist = items.data;
 });
@@ -21,10 +19,10 @@ chrome.storage.local.get(function (items) {
 
   }
   function deleteAll() {
-    chrome.storage.local.get(function (items) {
+    chrome.storage.sync.get(function (items) {
       items.data = [];
       blacklist = items;
-      chrome.storage.local.set(items, function () {
+      chrome.storage.sync.set(items, function () {
         console.log(items);
       });
     });
@@ -41,9 +39,9 @@ chrome.storage.local.get(function (items) {
     console.log("Hiiiiiiiii");
       if(index>-1 && index < blacklist.length){
           blacklist.splice(index,1);
-          chrome.storage.local.get(function (items) {
+          chrome.storage.sync.get(function (items) {
               items.data = blacklist;
-              chrome.storage.local.set(items, function () { 
+              chrome.storage.sync.set(items, function () { 
               })
           })
       }
@@ -66,7 +64,7 @@ chrome.storage.local.get(function (items) {
 
 
 function addLink(link) {
-  chrome.storage.local.get(function (items) {
+  chrome.storage.sync.get(function (items) {
     if (Object.keys(items).length > 0 && items.data) {
       // The data array already exists, add to it the new server and nickname
       items.data.push(link);
@@ -76,7 +74,7 @@ function addLink(link) {
     }
 
     // Now save the updated items using set
-    chrome.storage.local.set(items, function () {
+    chrome.storage.sync.set(items, function () {
       console.log('Data successfully saved to the storage!');
       console.log(items);
       blacklist = items.data;

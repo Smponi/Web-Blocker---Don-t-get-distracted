@@ -3,8 +3,12 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
 function download(filename) {
+    var content;
     if(blacklist.length > 0) {
     var pom = document.createElement('a');
+    for(i=0;i<=blacklist.length;i++){
+        content += blacklist[i]+";";
+    }
     pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(blacklist));
     pom.setAttribute('download', filename);
 

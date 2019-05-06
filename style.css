@@ -1,4 +1,5 @@
-#whitelist,#blacklist,#settings,#timer {
+
+#whitelist,#blacklist,#settings,#add {
     background-color: #424242; 
     color: #ffffff;
     text-align: center;
@@ -10,18 +11,15 @@
     line-height: 30px;
     border: 1px solid;
     border-radius: 4px;
+    cursor: pointer;
 }
-#whitelist{
-    margin-top: 10px;
-}
-
 a#footer {
     color: #424242;
     font-size: 0.8em;
     text-align: left;
 }
 
-#whitelist:hover,#blacklist:hover,#settings:hover,#timer:hover {
+#blacklist:hover,#add:hover {
     background-color: #6b6b6b;
     cursor: pointer;
     -webkit-transition: background-color 30ms linear;
@@ -86,4 +84,8 @@ a#footer {
   
   .slider.round:before {
     border-radius: 50%;
+  }
+
+  #mdc-list-item--activated{
+    background-color: aquamarine;
   }
