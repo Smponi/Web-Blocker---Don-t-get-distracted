@@ -89,3 +89,9 @@ a#footer {
   #mdc-list-item--activated{
     background-color: aquamarine;
   }
+
+  #textbox1 {
+    width: 70%;
+    vertical-align: middle;
+
+  }

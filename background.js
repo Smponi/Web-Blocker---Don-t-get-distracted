@@ -51,20 +51,79 @@ chrome.tabs.onUpdated.addListener(function (tab) {
         if(items.value == true){
         // Damit man nicht immer die gnaze Seite eingeben muss.
         for (i = 0; i < blacklist.length; i++) {
-
             //TODO: SEITE AUF DIE MAN WEITERGEIELETET WERDEN SOLL NOCH MACHEN
+
             if (active_tab.includes(blacklist[i])) {
                 chrome.tabs.update(tab.id, { url: "redirect.html" });
                 break;
             }
-
         }
+
 
     }
     });
 
 });
 
+//------------------------------------------------------------------------------------------------------------------------------------------------------
+/**
+ * Methods if I want to use a binary search for going through the list
+ * 
+ */
+
+
+function binarySearch(ar, el, compare_fn) {
+    var m = 0;
+    var n = ar.length - 1;
+    console.log(el);
+    while (m <= n) {
+        var k = (n + m) >> 1;
+        var cmp = compare_fn(el, ar[k]);
+        if (cmp > 0) {
+            m = k + 1;
+        } else if(cmp < 0) {
+            n = k - 1;
+        } else {
+            return k;
+        }
+    }
+    return -m - 1;
+}
+
+/**
+ * Method to compare two strings
+ * @param {First String to be checked} a 
+ * @param {Second String to be checked} b 
+ */
+function compare_Strings(a, b) {
+    a = a.toString();
+    b = b.toString();
+    console.log("b:" + b);
+    console.log("a:" +a);
+    console.log(a.toLowerCase().includes(b.toLowerCase()));
+    console.log(a.includes(b));
+
+    if(a.toLowerCase().includes(b.toLowerCase())) return 0;
+    if ( a.toLowerCase() < b.toLowerCase()) return -1;
+    if (a.toLowerCase() > b.toLowerCase()) return 1;
+    return 0;
+}
+
+/**
+ * Function to cut out the https shit.
+ */
+function cutBeginningOut(a){
+    a = a.toString();
+    console.log("isStartingWith:" + a.startsWith("https://www."));
+    if(a.startsWith("https://www.")) a = a.substring(12);
+    if(a.startsWith("http://www.")) a = a.substring(11);
+    if(a.startsWith("https://")) a = a.substring(9);
+    if(a.startsWith("http://")) a = a.substring(8);
+    if(a.startsWith("www.")) a = a.substring(4);
+
+    console.log("a:subString:" +a);
+    return a;
+}
 
 
 
