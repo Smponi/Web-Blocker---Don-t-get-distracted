@@ -1,23 +1,23 @@
 {
 "manifest_version": 2,
-"name": "prioreties first",
-"description": "don't get distracted!",
+"name": "Priorities first",
+"description": "Don't get distracted!",
 "icons":{
-    "128": "Unbenannt-2.png"
+    "128": "ressources/logo.png"
 },
 "version": "1.0.0",
 "browser_action": {
     "default title": "Work hard dream big",
-    "default_popup": "popup.html"
+    "default_popup": "HTML/popup.html"
 },
 "permissions": [
 "http://*/*", "https://*'/*","tabs","cookies","*://*.google.com","storage","webrequestblocking"
 ],
 "background": {
     "scripts":
-    ["background.js",
-    "storage.js"],
-    "pages": ["popup.html"],
+    ["js/background.js",
+    "js/storage.js"],
+    "pages": ["HTML/popup.html"],
     "persistent": false
   }
 }

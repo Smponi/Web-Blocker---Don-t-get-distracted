@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
   document.getElementById("add2").addEventListener("click", function(){myFunction()});
   document.getElementById("deleteEntries").addEventListener("click", function(){deleteEntries()});
 });
-// Damit blacklist nicht leer
+// Blacklist not empty
 chrome.storage.sync.get(function (items) {
 
   blacklist = items.data;
@@ -29,14 +29,12 @@ chrome.storage.sync.get(function (items) {
   }
 
     /**
-     * MUSS NOCH GETESTET WERDEN
      * 
      * Removes entry by splicing the array.
      * stores then blacklist in items.data
      * @param index int
      */
   function deleteEntry(index) {
-    console.log("Hiiiiiiiii");
       if(index>-1 && index < blacklist.length){
           blacklist.splice(index,1);
           chrome.storage.sync.get(function (items) {

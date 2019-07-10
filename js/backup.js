@@ -2,6 +2,10 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById("download").addEventListener("click", function(){download('backup.json');});
   });
 
+/**
+ * TO save your list in an xml file - in the future
+ * @param filename
+ */
 function download(filename) {
     var content;
     if(blacklist.length > 0) {

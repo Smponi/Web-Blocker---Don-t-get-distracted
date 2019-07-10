@@ -46,15 +46,13 @@ chrome.tabs.onUpdated.addListener(function (tab) {
         active_tab = tabs[0].url;
     });
     chrome.storage.sync.get(function (items) {
-        //console.log("value in popup.js" + items.value);
         blacklist = items.data;
         if(items.value == true){
-        // Damit man nicht immer die gnaze Seite eingeben muss.
+        // So you don't have to  save the whole url
         for (i = 0; i < blacklist.length; i++) {
-            //TODO: SEITE AUF DIE MAN WEITERGEIELETET WERDEN SOLL NOCH MACHEN
 
             if (active_tab.includes(blacklist[i])) {
-                chrome.tabs.update(tab.id, { url: "redirect.html" });
+                chrome.tabs.update(tab.id, { url: "HTML/redirect.html" });
                 break;
             }
         }
